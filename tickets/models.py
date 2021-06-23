@@ -9,7 +9,7 @@ class Passenger(models.Model):
     birth        = models.DateField()
     phone        = models.CharField(max_length=45)
     email        = models.EmailField(max_length=100)
-    gender       = models.BooleanField()
+    gender       = models.CharField(max_length=45)
     passport     = models.CharField(max_length=45)
     ticket       = models.ManyToManyField(Flight, through='Ticket')
 
@@ -21,6 +21,7 @@ class Ticket(models.Model):
     passenger     = models.ForeignKey(Passenger, on_delete=models.CASCADE, related_name="air_ticket")
     ticket_number = models.IntegerField()
     flight_id     = models.ForeignKey(Flight, on_delete=models.CASCADE)
+    
 
     class Meta: 
         db_table = 'tickets'
