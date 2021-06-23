@@ -7,8 +7,8 @@ class User(models.Model):
     korean_name  = models.CharField(max_length=45)
     english_name = models.CharField(max_length=45)
     birth        = models.CharField(max_length=45)
-    phone        = models.CharField(max_length=45, unique=True)
-    email        = models.EmailField(max_length=100, unique=True)
+    phone        = models.CharField(max_length=45)
+    email        = models.EmailField(max_length=100)
     gender       = models.CharField(max_length=45)
 
     class Meta: 
