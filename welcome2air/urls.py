@@ -2,5 +2,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('flights', include('flights.urls')),
-    path('tickets', include('tickets.urls'))
+    path('tickets', include('tickets.urls')),
+    path('users', include('users.urls'))
 ]
