@@ -38,21 +38,21 @@ class FlightListView(View):
             Q(flight_seat_flight__seat__name = seat_name)&
             Q(departure_datetime__gt = today)
         )
-        print(flight_filter)
+        
         result=[
                     {       
-                            'id'                    :index+1,
-                            'flight_id'             :flight.id ,
-                            'flight_number'         :flight.flight_number ,
-                            'departure_datetime'    :flight.departure_datetime,
-                            'arrival_datetime'      :flight.arrival_datetime,
-                            'duration'              :flight.duration,
-                            'price'                 :flight.price ,
-                            'departure_city_name'   :flight.departure_city.name ,
-                            'arrival_city_name'     :flight.arrival_city.name ,
-                            'departure_airport_code':flight.departure_city.airport_code ,
-                            'arrival_airport_code'  :flight.arrival_city.airport_code ,
-                            'seat_stock'            :flight.flight_seat_flight.get(seat__name=seat_name).stock,
+                        'id'                    :index+1,
+                        'flight_id'             :flight.id,
+                        'flight_number'         :flight.flight_number,
+                        'departure_datetime'    :flight.departure_datetime,
+                        'arrival_datetime'      :flight.arrival_datetime,
+                        'duration'              :flight.duration,
+                        'price'                 :flight.price,
+                        'departure_city_name'   :flight.departure_city.name,
+                        'arrival_city_name'     :flight.arrival_city.name,
+                        'departure_airport_code':flight.departure_city.airport_code,
+                        'arrival_airport_code'  :flight.arrival_city.airport_code,
+                        'seat_stock'            :flight.flight_seat_flight.get(seat__name=seat_name).stock
                     } for index,flight in enumerate(flight_filter)]
 
         return JsonResponse({'flights_view' :result}, status=200)

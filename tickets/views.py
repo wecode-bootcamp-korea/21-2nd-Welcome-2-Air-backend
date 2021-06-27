@@ -22,6 +22,7 @@ class TicketPdfView(View):
     def post(self, request):
         data       = json.loads(request.body)
         ticket_id  = data['ticket_id']
+        
         passengers = Passenger.objects.filter(ticket_id = ticket_id)
 
         for passenger in passengers:
@@ -64,3 +65,21 @@ class TicketPdfView(View):
             passenger.save()
 
         return JsonResponse({'message':'SAVE_SUCESS'}, status= 201)
+    
+    @login_decorator
+    def get(self, request):
+        ticket_id  = request.GET.get('ticket_id')
+
+        if not Passenger.objects.filter(ticket_id=ticket_id).exists():
+            return JsonResponse({'message':'INCORRECT_TICKET_ID'})
+
+        passengers = Passenger.objects.filter(ticket_id=ticket_id)
+
+        result = {'passenger_info':[{
+                  'korean_name'   : passenger.korean_name,
+                  'english_name'  :passenger.english_name,
+                  'pdf_url'       : passenger.pdf_url
+            } for passenger in passengers]
+        }
+
+        return JsonResponse(result, status=200)
