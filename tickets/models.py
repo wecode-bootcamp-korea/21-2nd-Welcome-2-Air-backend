@@ -19,8 +19,9 @@ class Passenger(models.Model):
 class Ticket(models.Model): 
     user          = models.ForeignKey(User, on_delete=models.CASCADE)
     passenger     = models.ForeignKey(Passenger, on_delete=models.CASCADE, related_name="air_ticket")
-    ticket_number = models.IntegerField()
-    flight_id     = models.ForeignKey(Flight, on_delete=models.CASCADE)
+    ticket_number = models.IntegerField(unique=True)
+    flight        = models.ForeignKey(Flight, on_delete=models.CASCADE)
+    pdf_url       = models.URLField()
     
 
     class Meta: 
