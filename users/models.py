@@ -3,7 +3,7 @@ from django.db import models
 class User(models.Model): 
     identity     = models.CharField(max_length=45, unique=True, null=True)
     kakao_id     = models.CharField(max_length=45, unique=True, null=True)
-    password     = models.CharField(max_length=45)
+    password     = models.CharField(max_length=200)
     korean_name  = models.CharField(max_length=45)
     english_name = models.CharField(max_length=45)
     birth        = models.CharField(max_length=45)

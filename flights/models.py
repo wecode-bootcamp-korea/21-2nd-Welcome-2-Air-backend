@@ -2,14 +2,14 @@ from django.db import models
 
 class Country(models.Model): 
     name = models.CharField(max_length=45)
-    
+        
     class Meta:
         db_table = 'countries'
 
 class City(models.Model):
     name         = models.CharField(max_length=45)
     airport_code = models.CharField(max_length=5)
-    country  = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country      = models.ForeignKey(Country, on_delete=models.CASCADE)
    
     class Meta:
         db_table = 'cities'
