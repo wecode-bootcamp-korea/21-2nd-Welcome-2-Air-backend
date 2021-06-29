@@ -3,6 +3,15 @@ from django.db import models
 from users.models   import User
 from flights.models import Flight
 
+class Ticket(models.Model): 
+    user          = models.ForeignKey(User, on_delete=models.CASCADE)
+    ticket_number = models.IntegerField(unique=True)
+    flight        = models.ForeignKey(Flight, on_delete=models.CASCADE)
+    pdf_url       = models.URLField(null=True)
+
+    class Meta: 
+        db_table = 'tickets'
+
 class Passenger(models.Model): 
     korean_name  = models.CharField(max_length=45)
     english_name = models.CharField(max_length=45)
@@ -11,18 +20,7 @@ class Passenger(models.Model):
     email        = models.EmailField(max_length=100)
     gender       = models.CharField(max_length=45)
     passport     = models.CharField(max_length=45)
-    ticket       = models.ManyToManyField(Flight, through='Ticket')
+    ticket       = models.ForeignKey(Ticket, on_delete=models.CASCADE)  
 
     class Meta: 
         db_table = 'passengers'
-
-class Ticket(models.Model): 
-    user          = models.ForeignKey(User, on_delete=models.CASCADE)
-    passenger     = models.ForeignKey(Passenger, on_delete=models.CASCADE, related_name="air_ticket")
-    ticket_number = models.IntegerField(unique=True)
-    flight        = models.ForeignKey(Flight, on_delete=models.CASCADE)
-    pdf_url       = models.URLField()
-    
-
-    class Meta: 
-        db_table = 'tickets'
