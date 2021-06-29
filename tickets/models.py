@@ -22,6 +22,5 @@ class Ticket(models.Model):
     ticket_number = models.IntegerField()
     flight_id     = models.ForeignKey(Flight, on_delete=models.CASCADE)
     
-
     class Meta: 
         db_table = 'tickets'
