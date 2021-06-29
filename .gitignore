@@ -2,7 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,django,visualstudiocode,linux,zsh,macos,vim,pycharm
 db_uploader.py
 my_settings.py
-*.csv
+s_key.json
+welcome2air.py
 
 db_uploader.py
 ### VisualStudioCode ###
