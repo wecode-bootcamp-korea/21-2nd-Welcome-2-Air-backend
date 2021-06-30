@@ -30,4 +30,3 @@ class KakaoSignIn(View):
                 token = jwt.encode({"user_id":user.kakao_id},SECRET_KEY, ALGORITHM)
                 
                 return JsonResponse({"token":token},status=200)
-

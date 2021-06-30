@@ -5,7 +5,7 @@ from flights.models import Flight
 
 class Ticket(models.Model): 
     user          = models.ForeignKey(User, on_delete=models.CASCADE)
-    ticket_number = models.IntegerField(unique=True)
+    ticket_number = models.CharField(max_length=50)
     flight        = models.ForeignKey(Flight, on_delete=models.CASCADE)
     
     class Meta: 
