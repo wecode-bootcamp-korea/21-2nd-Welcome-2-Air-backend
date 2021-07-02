@@ -106,7 +106,7 @@ class ReservationView(View):
             if not Flight.objects.filter(id=flight_id).exists():
                 return JsonResponse({'ERROR' : 'FLIGHT NOT AVAILABLE'}, status=400)
 
-            if not seat_name in ["economy", "business", "first"]:
+            if not seat_name in ["economy", "business", "firstclass"]:
                 return JsonResponse({'ERROR' : 'WRONG SEAT NAME'}, status=400)
             
             flight_seat = FlightSeat.objects.get(seat__name=seat_name, flight_id=flight_id)
