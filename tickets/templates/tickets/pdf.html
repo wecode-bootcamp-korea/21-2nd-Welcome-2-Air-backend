@@ -5,19 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .alll_wrap{margin-left:auto;margin-right:auto;width:1200px; background-color:white;height:650px;border:1px solid #727272;}
+        
+        h1{text-align:center; font-size:50px;padding-top:30px;color:#333333;border-top:8px solid rgb(36, 36, 107); }
+
+        p{font-size:20px; color:rgb(51, 51, 51)}
+
+        .all_wrap{width:1200px; margin-left:auto; margin-right:auto; height:500px;border-top:8px solid rgb(204, 38, 26);}
+        .left_box_wrap{height:120px;margin-top:20px; }
+        .left_box_wrap, .right_box_wrap{width:1000px; margin-left:auto; margin-right:auto;border-top:3px dotted #eaeaea;}
+
+        .box_wrap1, .box_wrap2{width:499px;}
+        .box_wrap1{float:left;border-right:2px dotted #eaeaea;}
+        .box_wrap2{float:right;}
+        
+        .box_wrap2 .pass,.box_wrap2 .phone{text-indent:70px;}
+        img{float:right;margin-left:auto; margin-right:auto;}
+
+        .right_box_wrap{width:1000px; height:500px;}
+        .left_box_wrap p, .right_box_wrap p{text-align:left;}
+        /* .right_box_wrap p{} */
+        .bb{text-indent:70px;}
+        .aa,.bb{width:499px; float:left;height:300px; font-size:20px; height:150px;}
+        .aa{float:left;border-right:2px dotted #eaeaea;}
+        .aa,.cc{text-indent:0px;}
+        .cc{float:left;background-color:white;width:500px;  border-top:3px solid #eaeaea;  height:150px;}
+        img{float:left;margin-left:auto; margin-right:auto;width:430px;height:100px;margin-top:50px;margin-left:30px;}
+    </style>
 </head>
+
 <body>
-    <h1>Welcome2Air Ticket</h1>
-    <p>이름(KOREA) : {{korean_name}} , 이름(ENGLISH) : {{english_name}} , 여권번호 : {{passport}}</p>
-    <p>폰 번호 : {{phone}}</p>
-    <p>판명 : {{flight_number}}</p>
-    <p>비행시간 : {{duration}}</p>
-    <p>출발시간 : {{departure_datetime}} , 도착시간 : {{arrival_datetime}}</p>
+    <div class="alll_wrap">
 
-    <p>출발지 : {{departure_country}}_{{departure_city}} , 공항코드 : {{departure_airport_code}}</p>
+        <h1 class="main_name"><span class="namename">AIR-TICKET</span></h1>
+        <div class="all_wrap">
+            <div class="left_box_wrap">
+                <div class="box_wrap1">
+                    <p class="name">이름 (KOREAN) : {{korean_name}}</p>
+                    <p class="eng_name">이름(ENGLISH) : {{english_name}}</p>
+                </div>
+                <div class="box_wrap2">
+                    <p class="pass">여권번호 : {{passport}}</p>
+                    <p class="phone">폰 번호 : {{phone}}</p>
+                </div>
+            </div>
+        
+        <div class="right_box_wrap">
+            <div class="box_wrap">
+                <div class="aa">
+                    <p class="time">출발시간 : {{departure_datetime}}</p>
+                    <p>출발지 : {{departure_country}}_{{departure_city}}</p>
+                    <p class="code">공항코드 : {{departure_airport_code}}</p>
+                </div>
+                
+                <div class="bb">
+                    <p class="time">도착시간 : {{arrival_datetime}}</p>
+                    <p>도착지 : {{arrival_country}}_{{arrival_city}}</p>
+                    <p class="code">공항코드 : {{arrival_airport_code}}</p>
+                    
+                </div>
+                <div class="cc">
+                    <p class="duration">비행시간 : {{duration}}</p>   
+                    <p class="flight_number">판명 : {{flight_number}}</p>
+                    <p class="price">가격 : {{price}}</p>
+                    
+                </div> 
+                
+            </div>
+            <img src="https://welcome2air.s3.ap-northeast-2.amazonaws.com/logo.png" alt="logo" width="450" height="100">
+        </div>
+        
 
-    <p>도착지 : {{arrival_country}}_{{arrival_city}} , 공항코드 : {{arrival_airport_code}}</p>
-    <p>가격 : {{price}}</p>
-    
+
+    </div>
+
 </body>
 </html>

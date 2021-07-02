@@ -20,7 +20,7 @@ class TicketPdfView(View):
         aws_secret_access_key = AWS_SECRET_KEY
     )
 
-    @login_decorator
+    # @login_decorator
     def post(self, request):
         data       = json.loads(request.body)
         ticket_id  = data['ticket_id']
@@ -36,7 +36,7 @@ class TicketPdfView(View):
                 "flight_number"          : passenger.ticket.flight.flight_number,
                 "departure_datetime"     : passenger.ticket.flight.departure_datetime,
                 "arrival_datetime"       : passenger.ticket.flight.arrival_datetime,
-                "duration"               : passenger.ticket.flight.duration,
+                "duration"               : passenger.ticket.flight.duration.strftime("%H:%M"),
                 "departure_city"         : passenger.ticket.flight.departure_city.name,
                 "arrival_city"           : passenger.ticket.flight.arrival_city.name,
                 "departure_country"      : passenger.ticket.flight.departure_city.country.name,
@@ -68,7 +68,7 @@ class TicketPdfView(View):
 
         return JsonResponse({'message':'SAVE_SUCESS'}, status= 201)
     
-    @login_decorator
+    # @login_decorator
     def get(self, request):
         ticket_id  = request.GET.get('ticket_id')
 
@@ -140,7 +140,7 @@ class ReservationView(View):
             flight_seat.stock -= len(passengers)
             flight_seat.save()
             
-            return JsonResponse({'result' : 'SUCCESS', 'ticketNumber' : ticket.ticket_number}, status=201)
+            return JsonResponse({'result' : 'SUCCESS', 'ticketNumber' : ticket.ticket_number, 'ticketId':ticket.id}, status=201)
         except KeyError:
             return JsonResponse({'ERROR' : 'INVALID KEY'}, status=400)
 
